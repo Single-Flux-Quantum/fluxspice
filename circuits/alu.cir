@@ -1,0 +1,77 @@
+* Superconducting SPICE Netlist (Disclosed Paradigm: Cut-Balanced RSFQ (PBMap Dynamic Programming))
+* Circuit: top
+* Target PDK: mitll_sfq5ee
+* Gates: 3 | Splitters: 0 | DFFs: 22 | Total JJs: 107
+* Logic Depth (GLP Clock Cycles): 2
+* Total Estimated Area: 35000.0 um^2
+************************************************************************
+
+.param Tclk=20.0p
+.tran 0.25p 500.0p 0 0.25p
+
+* Cell Library Macro Definitions
+.include mitll_sfq5ee_cells.inc
+
+* Clock Distribution Rail
+Vclk CLK 0 pulse(0 2m 5p 2p 2p 2p 20.0p)
+
+* Primary Input Signal Sources
+* PI: clk
+V_clk n_0 0 pulse(0 2m 10.0p 2p 2p 2p 40.0p)
+* PI: rst_n
+V_rst_n n_1 0 pulse(0 2m 10.5p 2p 2p 2p 40.0p)
+
+* Superconducting Gate-Level Pipelined Instances
+X_15_and_result n_13 n_14 CLK n_15 AND2T
+X_18_or_result n_16 n_17 CLK n_18 OR2T
+X_21_xor_result n_19 n_20 CLK n_21 XORT
+X_30_result n_29 CLK n_30 DFFT
+X_32_zero_flag n_31 CLK n_32 DFFT
+X_34_overflow_flag n_33 CLK n_34 DFFT
+X_35_result n_11 CLK n_35 DFFT
+X_36_overflow_flag n_26 CLK n_36 DFFT
+X_37_result n_12 CLK n_37 DFFT
+X_38_overflow_flag n_27 CLK n_38 DFFT
+X_39_result n_15 CLK n_39 DFFT
+X_41_overflow_flag n_40 CLK n_41 DFFT
+X_42_result n_18 CLK n_42 DFFT
+X_44_overflow_flag n_43 CLK n_44 DFFT
+X_45_result n_21 CLK n_45 DFFT
+X_47_overflow_flag n_46 CLK n_47 DFFT
+X_48_result n_22 CLK n_48 DFFT
+X_50_overflow_flag n_49 CLK n_50 DFFT
+X_51_result n_23 CLK n_51 DFFT
+X_53_overflow_flag n_52 CLK n_53 DFFT
+X_54_result n_24 CLK n_54 DFFT
+X_56_overflow_flag n_55 CLK n_56 DFFT
+X_58_result n_57 CLK n_58 DFFT
+X_60_overflow_flag n_59 CLK n_60 DFFT
+X_61_zero_flag n_28 CLK n_61 DFFT
+
+
+* Primary Input Signal Sources (8 Ports)
+* PI: op_code
+V_op n_29 0 pulse(0 2m 10.0p 2p 2p 2p 40.0p)
+* PI: a
+V_a n_13 0 pulse(0 2m 10.0p 2p 2p 2p 40.0p)
+* PI: b
+V_b n_14 0 pulse(0 2m 10.0p 2p 2p 2p 40.0p)
+
+* Connect internal gate inputs
+R_wire_a1 n_13 n_16 0.001
+R_wire_a2 n_13 n_19 0.001
+R_wire_b1 n_14 n_17 0.001
+R_wire_b2 n_14 n_20 0.001
+R_wire_res n_15 n_57 0.001
+
+* PO: result
+R_load_58 n_58 0 10.0
+
+* Primary Output Terminations
+* PO: zero_flag
+R_load_62 n_61 0 10.0
+* PO: overflow_flag
+R_load_63 n_60 0 10.0
+
+.plot v(CLK) v(n_1) v(n_29) v(n_13) v(n_14) v(n_58) v(n_61) v(n_60)
+.end

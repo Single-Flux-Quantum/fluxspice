@@ -1,0 +1,143 @@
+{
+  "pdk_name": "MIT-LL_SFQ5ee",
+  "foundry": "MIT Lincoln Laboratory",
+  "temperature_k": 4.2,
+  "default_dbu_per_micron": 1000,
+  "description": "8-Metal Niobium Fully-Planarized Superconducting Process with 10 kA/cm2 Josephson Junctions",
+  "layers": {
+    "M0": {
+      "number": 1,
+      "datatype": 0,
+      "type": "ground_plane",
+      "thickness_nm": 200,
+      "lambda_nm": 85
+    },
+    "M1": {
+      "number": 2,
+      "datatype": 0,
+      "type": "base_electrode",
+      "thickness_nm": 150,
+      "lambda_nm": 85
+    },
+    "JJ": {
+      "number": 3,
+      "aliases": [15],
+      "datatype": 0,
+      "type": "barrier",
+      "jc_ka_cm2": 10.0,
+      "cs_ff_um2": 50.0,
+      "v_gap_mv": 2.8
+    },
+    "M2": {
+      "number": 20,
+      "datatype": 0,
+      "type": "counter_electrode",
+      "thickness_nm": 200,
+      "lambda_nm": 85
+    },
+    "M3": {
+      "number": 30,
+      "datatype": 0,
+      "type": "ground_plane",
+      "thickness_nm": 250,
+      "lambda_nm": 85
+    },
+    "M4": {
+      "number": 40,
+      "datatype": 0,
+      "type": "routing",
+      "thickness_nm": 200,
+      "lambda_nm": 85
+    },
+    "RES": {
+      "number": 4,
+      "aliases": [50],
+      "datatype": 0,
+      "type": "resistor",
+      "sheet_rho_ohm_sq": 2.0
+    },
+    "VIA": {
+      "number": 5,
+      "datatype": 0,
+      "type": "via"
+    },
+    "BIAS": {
+      "number": 8,
+      "datatype": 0,
+      "type": "bias"
+    },
+    "VDD": {
+      "number": 9,
+      "datatype": 0,
+      "type": "power"
+    },
+    "MOAT": {
+      "number": 10,
+      "aliases": [60],
+      "datatype": 0,
+      "type": "moat"
+    },
+    "CAP": {
+      "number": 11,
+      "aliases": [70],
+      "datatype": 0,
+      "type": "capacitor_dielectric",
+      "thickness_nm": 50,
+      "cs_ff_um2": 1.2
+    },
+    "LABEL": {
+      "number": 30,
+      "datatype": 0,
+      "type": "text_label"
+    }
+  },
+  "devices": {
+    "JJ_PRIMARY": {
+      "type": "josephson_junction",
+      "barrier_layer": "JJ",
+      "base_layer": "M1",
+      "counter_layer": "M2",
+      "jc_ka_cm2": 10.0,
+      "cs_ff_um2": 50.0,
+      "v_gap_mv": 2.8
+    },
+    "SHUNT_RESISTOR": {
+      "type": "resistor",
+      "body_layer": "RES",
+      "contact_layers": ["M1", "M2"],
+      "sheet_rho_ohm_sq": 2.0
+    },
+    "MIM_CAP": {
+      "type": "capacitor",
+      "barrier_layer": "CAP",
+      "base_layer": "M1",
+      "counter_layer": "M2",
+      "cs_ff_um2": 1.2
+    }
+  },
+  "drc_rules": {
+    "min_width_um": {
+      "M0": 0.5,
+      "M1": 0.5,
+      "M2": 0.5,
+      "M3": 0.5,
+      "M4": 0.5
+    },
+    "min_spacing_um": {
+      "M0": 0.5,
+      "M1": 0.5,
+      "M2": 0.5,
+      "M3": 0.5,
+      "M4": 0.5
+    },
+    "min_poly_area_um2": 0.2,
+    "min_ground_overlap_um": 0.5,
+    "min_moat_jj_distance_um": 5.0,
+    "max_moat_flux_coupling_ratio": 0.02,
+    "min_jj_area_um2": 0.5,
+    "max_jj_area_um2": 25.0,
+    "max_jj_aspect_ratio": 2.0,
+    "max_shunt_distance_um": 2.5,
+    "base_electrode_enclosure_um": 0.5
+  }
+}
