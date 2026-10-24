@@ -1,8 +1,8 @@
 # FluxSPICE™ Superconducting SPICE Simulation & Regression Report
 
 > **Release Version:** `v0.1.0`  
-> **Git Commit:** [`cc21287`](https://github.com/Single-Flux-Quantum/fluxspice/commit/cc21287) (`main` branch)  
-> **Generation Timestamp:** 2026-10-23 15:09:57  
+> **Git Commit:** [`78a9297`](https://github.com/Single-Flux-Quantum/fluxspice/commit/78a9297) (`main` branch)  
+> **Generation Timestamp:** 2026-10-24 23:15:41  
 > **Execution Status:** **100% REGRESSION PASS (6/6 Architectural Invariant Suites Clean)**  
 > **Data Integrity:** **100% MEASURED SIMULATION DATA (Zero Synthetic / Hardcoded Benchmarks)**  
 > **Target PDK Compatibility:** MIT-LL SFQ5ee Superconducting Process & Cell Library Standard
@@ -35,7 +35,7 @@ All 6 primary architectural invariants are verified clean. Runtimes reflect nati
 | **TEST-4** | SFQ Pulse Area Quantization | Bit-for-bit $\int V dt = \Phi_0$ action conservation | **PASS** | 0.8 ms |
 | **TEST-5** | MIT-LL Cell Library Ingestion | Recursive `.include` parser with subcircuit scoping | **PASS** | 1.1 ms |
 | **TEST-6** | ISCAS-85 c17 Full Transient Solve | 81-JJ benchmark transient solve (2000 steps, zero rejected) | **PASS** | 72.5 ms |
-| **OVERALL**| **Complete Regression Test Suite** | **6/6 Architectural Invariants Verified Clean** | **100% PASS** | **86.3 ms** |
+| **OVERALL**| **Complete Regression Test Suite** | **6/6 Architectural Invariants Verified Clean** | **100% PASS** | **299.0 ms** |
 
 ---
 
@@ -66,14 +66,14 @@ Live measured wall-clock execution time ($T_1, T_2, T_4, T_8$) and speedup ($S_p
 
 | Benchmark Circuit | JJs ($N_{JJ}$) | Steps | $T_1$ (1 CPU) | $T_2$ (2 CPUs) | $T_4$ (4 CPUs) | $T_8$ (8 CPUs) | Speedup $S_4$ | Speedup $S_8$ | Peak Throughput (steps/s) |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **`shift_register_left`** | 12 | 2000 | 0.0094 s | 0.0082 s | 0.0084 s | 0.0082 s | **1.12x** | **1.15x** | **244340.5** |
-| **`c17`** | 81 | 2000 | 0.0741 s | 0.0872 s | 0.0723 s | 0.0743 s | **1.02x** | **1.00x** | **27674.2** |
-| **`carry_lookahead_4b`** | 81 | 2000 | 0.0800 s | 0.0846 s | 0.0726 s | 0.0772 s | **1.10x** | **1.04x** | **27552.0** |
-| **`alu`** | 101 | 2000 | 0.1046 s | 0.1122 s | 0.1034 s | 0.1061 s | **1.01x** | **0.99x** | **19342.0** |
-| **`gray_counter`** | 35 | 2000 | 0.0208 s | 0.0196 s | 0.0202 s | 0.0198 s | **1.03x** | **1.05x** | **102118.4** |
-| **`kogge_stone_4b`** | 186 | 2000 | 0.3619 s | 0.3621 s | 0.3603 s | 0.3606 s | **1.00x** | **1.00x** | **5551.6** |
-| **`brent_kung_4b`** | 201 | 2000 | 0.4292 s | 0.4312 s | 0.4314 s | 0.4326 s | **0.99x** | **0.99x** | **4659.8** |
-| **`brent_kung_8b`** | 505 | 2000 | 2.9787 s | 2.9994 s | 2.9687 s | 3.0606 s | **1.00x** | **0.97x** | **673.7** |
+| **`shift_register_left`** | 12 | 2000 | 0.6750 s | 0.8910 s | 0.0561 s | 0.8246 s | **12.03x** | **0.82x** | **35664.9** |
+| **`c17`** | 81 | 2000 | 0.5910 s | 0.2600 s | 0.3088 s | 0.6302 s | **1.91x** | **0.94x** | **7693.5** |
+| **`carry_lookahead_4b`** | 81 | 2000 | 0.4114 s | 0.3370 s | 0.3149 s | 0.2795 s | **1.31x** | **1.47x** | **7156.5** |
+| **`alu`** | 101 | 2000 | 0.3555 s | 0.3924 s | 1.1443 s | 0.1153 s | **0.31x** | **3.08x** | **17342.4** |
+| **`gray_counter`** | 35 | 2000 | 0.2076 s | 0.2948 s | 0.0226 s | 0.0257 s | **9.19x** | **8.08x** | **88594.0** |
+| **`kogge_stone_4b`** | 186 | 2000 | 0.0896 s | 0.0770 s | 0.0924 s | 0.4977 s | **0.97x** | **0.18x** | **25980.1** |
+| **`brent_kung_4b`** | 201 | 2000 | 0.0892 s | 0.1292 s | 0.0799 s | 0.2590 s | **1.12x** | **0.34x** | **25032.3** |
+| **`brent_kung_8b`** | 505 | 2000 | 0.2538 s | 0.2045 s | 0.2825 s | 0.3990 s | **0.90x** | **0.64x** | **9779.3** |
 
 ---
 
